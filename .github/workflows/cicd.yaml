@@ -1,0 +1,23 @@
+name: Medical_Expences
+
+
+on:
+  push:
+    branches: ["main"]
+  pull:
+    branches: ["main"]
+
+permissions:
+    contents: read
+
+
+jobs:
+    build:
+        runs-on: unbuntu-latest
+
+        steps:
+            - users: actions/checkout@v3
+            - name: Set up Python 3.12.4
+              uses : actions/checkout@v3
+              with :
+                python-version: "3.12.4"

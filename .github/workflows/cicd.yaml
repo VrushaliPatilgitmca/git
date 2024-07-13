@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: [ ubuntu-latest ]  #self-hosted_
+    runs-on: [ self-hosted ]  #ubuntu-latest 
 
     steps:
       - uses: actions/checkout@v3
@@ -47,5 +47,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN}}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-      
+      - name: Trivy Files System
+        run : trivy fs . > trivy.txt
+
+      # - name: Image Scan
+      #   run : trivy image vrush0402/medical:latest > trivyimage.txt
+
+      # - name: Trivy CIS Compliance Issue
+      #   run: trivy image --compliance docker-cis vrush0402/medical:latest > trivycompliance.txt
 
